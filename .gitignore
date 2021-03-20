@@ -35,6 +35,8 @@ ehthumbs.db
 Thumbs.db
 
 /.settings/
+/bin
+/build
 .project
 .classpath
 .idea

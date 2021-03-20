@@ -1,0 +1,78 @@
+buildscript {
+	ext {
+        springBootVersion = '2.2.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+ 
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+
+jar {
+    baseName = 'springbootwebapp'
+    version =  '0.1.0'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter")
+	compile("org.springframework.boot:spring-boot-starter-web")	
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	//compile("org.springframework.boot:spring-boot-starter-security")
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	compile("org.webjars:bootstrap:3.3.4")
+	compile("org.webjars:jquery:2.1.4")
+	annotationProcessor 'org.projectlombok:lombok'
+	//compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	
+   
+    // for Oracle DB
+    //compile("com.oracle.jdbc:ojdbc8:12.2.0.1")
+    
+    // for MySQL DB
+    //runtimeOnly("mysql:mysql-connector-java") {
+    //	exclude group: 'org.apache.tomcat', module: 'tomcat-jdbc'
+    //}
+    
+    // for H2 DB
+    runtime("org.hsqldb:hsqldb")
+	runtime("com.h2database:h2")
+    
+   
+   	compile("com.zaxxer:HikariCP:2.6.0") 
+	runtime("org.springframework.boot:spring-boot-devtools")
+	
+	compile("org.springframework.boot:spring-boot-starter-test")
+	//compile("org.webjars:bootstrap:3.3.7")
+    testCompile("junit:junit")
+}
+
+
+
+
+
+
+
+
