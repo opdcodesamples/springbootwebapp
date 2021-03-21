@@ -1,0 +1,32 @@
+kind: "DeploymentConfig"
+apiVersion: "v1"
+metadata:
+  name: "myspringboothelloapp"
+spec:
+  template: 
+    metadata:
+      labels:
+        name: "myspringboothelloapp"
+    spec:
+      containers:
+        - name: "myspringboothelloapp"
+          image: "osmanddas/myspringboothelloapp:layered"
+          ports:
+            - containerPort: 8080
+              protocol: "TCP"
+  replicas: 1 
+  triggers:
+    - type: "ConfigChange" 
+    - type: "ImageChange" 
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - "myspringboothelloapp"
+        from:
+          kind: "ImageStreamTag"
+          name: "myspringboothelloapp:layered"
+  strategy: 
+    type: "Rolling"
+  paused: false 
+  revisionHistoryLimit: 2 
+  minReadySeconds: 0
