@@ -37,6 +37,7 @@ Thumbs.db
 /.settings/
 /bin
 /build
+/.gradle/
 .project
 .classpath
 .idea
