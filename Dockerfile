@@ -1,5 +1,6 @@
-FROM openjdk:8-jdk-alpine
-RUN addgroup -S spring && adduser -S spring -G spring
+FROM openjdk:11
+RUN groupadd spring 
+RUN useradd -g spring spring
 USER spring:spring
 
 # This was the easiest and most straightform way of creating an image
